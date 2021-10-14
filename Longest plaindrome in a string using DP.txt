@@ -1,0 +1,28 @@
+public class Main{
+	public static void main(String[] args) {
+        String s="Geeks";int maxcount=0,start=0;
+        boolean[][] a=new boolean[s.length()][s.length()];
+
+        for(int g=0;g<s.length();g++){
+            for(int i=0,j=g;j<s.length();i++,j++){
+                if(g==0) a[i][j]=true;
+                else if(g==1){
+                    a[i][j]=s.charAt(i)==s.charAt(j);  
+                } 
+                else{
+                    if(s.charAt(i)==s.charAt(j) && a[i+1][j-1]){
+                        a[i][j]=true;
+                    }else{
+                        a[i][j]=false;
+                    }
+                }
+                if(a[i][j] && g>maxcount){
+                    maxcount=g;
+                    start=i;
+                }
+            }
+        }
+        System.out.println("Count: "+(maxcount+1));            
+        System.out.println("Longest palindrome: "+s.substring(start,start+maxcount+1));    
+	}
+}

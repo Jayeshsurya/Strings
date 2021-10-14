@@ -1,0 +1,27 @@
+
+public class Main{
+	public static void main(String[] args) {
+        String s="Geeks";
+        String result="";int maxlength=0;
+        for(int i=0;i<s.length();i++){
+            for(int j=i;j<s.length();j++){
+                String m=s.substring(i,j+1);
+                if(palin(m)==1 && m.length()>maxlength){
+                    result=m;
+                    maxlength=m.length();
+                }
+            }
+        }
+        System.out.println("Resultant string: "+result+" Length: "+maxlength);
+	}
+
+    public static int palin(String str){
+        int i=0,j=str.length()-1;
+        while(j>=i){
+            if(str.charAt(i)!=str.charAt(j))
+                return 0;
+            i++;j--;    
+        }
+        return 1;
+    }
+}
